@@ -1,0 +1,5 @@
+{
+  "appTitle": "Hrt App",
+  "greeting": "Hello, {name}!",
+  "buttonLabel": "Submit"
+}
