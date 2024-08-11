@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrt_flutter_app/controller/localization_controller.dart';
+import 'package:hrt_flutter_app/features/loading/loading_page.dart';
 import 'package:hrt_flutter_app/features/login/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -14,7 +15,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialBinding: BindingsBuilder(() {
-        Get.put(LocalizationController()); // Register the LanguageController
+        Get.lazyPut<LocalizationController>(() => LocalizationController(), fenix: true);
       }),
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -33,11 +33,12 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: L10n.all,
-      locale: const Locale('en'),
-      // locale: Get.find<LanguageController>().locale,
+      // locale: const Locale('bn'),
+      // fallbackLocale: const Locale('bn'),
+      // locale: Get.find<LocalizationController>().locale,
       // supportedLocales: Get.find<LanguageController>().supportedLocales,
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const LoginPage(),
+      home: const LoadingPage(),
     );
   }
 }

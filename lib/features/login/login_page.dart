@@ -19,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   LocalizationController localizationController = Get.find();
 
   @override
+  void initState() {
+    super.initState();
+
+    // localizationController.loadLocale();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -28,18 +35,38 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DropdownButton<Locale>(
-              icon: const Icon(Icons.settings, color: Colors.black),
-              value: localizationController.locale,
-              items: localizationController.supportedLocales.map((locale) {
-                return DropdownMenuItem(
-                  value: locale,
-                  child: Text(
-                      locale.languageCode), // Use language code for display
-                );
-              }).toList(),
-              onChanged: localizationController.setLocale,
+            // DropdownButton<Locale>(
+            //   icon: const Icon(Icons.settings, color: Colors.black),
+            //   value: localizationController.locale,
+            //   items: localizationController.supportedLocales.map((locale) {
+            //     return DropdownMenuItem(
+            //       value: locale,
+            //       child: Text(
+            //           locale.languageCode), // Use language code for display
+            //     );
+            //   }).toList(),
+            //   onChanged: localizationController.setLocale,
+            // ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    localizationController.setLocale(Locale('en'));
+                  },
+                  child: Text('English'),
+                ),
+                const SizedBox(width: 8),
+                OutlinedButton(
+                  onPressed: () {
+                    localizationController.setLocale(Locale('bn'));
+                  },
+                  child: Text('Bengali'),
+                ),
+              ],
             ),
+
             TextButton(
               onPressed: () {
                 Get.to(HomePage());

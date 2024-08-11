@@ -3,23 +3,10 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalizationController extends GetxController {
-  Locale _locale = const Locale('en'); // Default locale
-  final List<Locale> supportedLocales = [
-    const Locale('en'),
-    const Locale('bn'),
-  ];
-
-  Locale get locale => _locale;
 
   void setLocale(Locale? locale) {
-    if (!supportedLocales.contains(locale)) return;
-    _locale = locale!;
-
-    debugPrint('setLocale :: $_locale');
-
-    Get.updateLocale(_locale);
-
-    // update();
+    saveLocale(locale!);
+    Get.updateLocale(locale);
   }
 
   void loadLocale() async {
@@ -29,10 +16,12 @@ class LocalizationController extends GetxController {
     if (localeString != null) {
       // Get.updateLocale(Locale.fromSubtags(localeString.split('-')));
       Get.updateLocale(Locale(localeString));
+      debugPrint('LoadLocale :: ${Get.locale}');
     }
   }
 
   void saveLocale(Locale locale) async {
+    debugPrint('saveLocale :: ${locale.toString()}');
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('locale', locale.toString());
   }
