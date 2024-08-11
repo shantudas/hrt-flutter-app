@@ -1,5 +1,10 @@
 {
   "appTitle": "এইচ আর টি",
   "greeting": "হ্যালো, {name}!",
-  "buttonLabel": "জমা দিন"
+
+  "loginPageAppBarTitle": "লগইন",
+  "loginPageButton": "হোম এ যান",
+
+  "homePageAppBarTitle": "হোম",
+  "homePageButton": "লগইন করতে ফিরে যান"
 }

@@ -1,5 +1,10 @@
 {
   "appTitle": "Hrt App",
   "greeting": "Hello, {name}!",
-  "buttonLabel": "Submit"
+
+  "loginPageAppBarTitle": "Login",
+  "loginPageButton": "Go To Home",
+
+  "homePageAppBarTitle": "Home",
+  "homePageButton": "Go Back to Login"
 }
